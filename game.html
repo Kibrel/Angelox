@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#07070d">
+  <title>游戏中 — Angelox</title>
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body class="game-body">
+  <main class="game-shell" id="gameShell">
+    <canvas class="game-canvas" id="gameCanvas" aria-label="节奏游戏区域"></canvas>
+    <div class="game-topbar">
+      <a class="icon-button" href="levels.html" aria-label="返回闯关页面" title="返回闯关">←</a>
+      <div class="topbar-track"><strong id="trackTitle">Angelox</strong><span id="trackMeta">BPM -- / STAGE --</span><span id="audioStatus" class="audio-status" data-kind="info">音频状态</span></div>
+      <div class="topbar-actions"><button class="icon-button" id="pauseButton" type="button" aria-label="暂停游戏" title="暂停 / 继续">Ⅱ</button></div>
+    </div>
+
+    <section class="game-overlay" id="startOverlay">
+      <div class="game-overlay-card">
+        <div class="game-logo">ANGELOX</div><div class="game-subtitle">RHYTHM PROJECT</div>
+        <p class="game-description" id="startDescription">准备好跟随节拍了吗？音符抵达判定线时按下对应轨道。</p>
+        <p class="audio-status-hint" id="audioStatusHint"></p>
+        <div class="game-keys"><div class="game-key">左轨<b>D / F / ←</b>触屏点左侧</div><div class="game-key right">右轨<b>J / K / →</b>触屏点右侧</div></div>
+        <p class="game-description">长条音符需要按住，直到音符结束。</p>
+        <button class="game-button" id="startButton" type="button">开始挑战</button>
+        <a class="secondary-game-button" href="levels.html">返回选关</a>
+      </div>
+    </section>
+
+    <section class="game-overlay hidden" id="pauseOverlay">
+      <div class="game-overlay-card"><div class="game-logo" style="font-size:42px">PAUSED</div><p class="game-description">节拍已暂停，准备好后继续。</p><button class="game-button" id="resumeButton" type="button">继续游戏</button><button class="secondary-game-button" id="restartFromPause" type="button">重新开始</button><a class="secondary-game-button" href="levels.html">退出到选关</a></div>
+    </section>
+
+    <section class="game-overlay hidden" id="resultOverlay">
+      <div class="game-overlay-card">
+        <div class="result-caption">CHALLENGE RESULT</div><div class="result-grade" id="resultGrade">S</div><div class="result-score" id="resultScore">0</div><div class="result-caption">TOTAL SCORE</div>
+        <div class="result-grid" id="resultDetails"></div>
+        <p class="result-hint" id="resultHint"></p>
+        <div class="result-buttons"><button class="game-button" id="retryButton" type="button">再挑战一次</button><button class="secondary-game-button hidden" id="nextButton" type="button">下一关 →</button></div>
+        <a class="secondary-game-button" href="levels.html">返回选关</a>
+      </div>
+    </section>
+    <div class="countdown hidden" id="countdown">3</div>
+  </main>
+  <script src="js/charts.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

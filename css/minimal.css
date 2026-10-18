@@ -1,0 +1,147 @@
+:root {
+  color-scheme: dark;
+  --bg: #080811;
+  --text: #f7f7ff;
+  --muted: #777b98;
+  --cyan: #39e6ff;
+  --violet: #a06bff;
+  --pink: #ff4fd8;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; margin: 0; }
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+a { color: inherit; text-decoration: none; }
+
+.home-page {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 44%, rgba(91, 73, 163, .13), transparent 42%),
+    var(--bg);
+}
+.home-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  transform: translateY(-2vh);
+}
+.wordmark {
+  margin: 0;
+  font-size: clamp(48px, 13vw, 76px);
+  line-height: 1.05;
+  font-weight: 850;
+  letter-spacing: .035em;
+  color: var(--text);
+}
+.start-button {
+  display: inline-flex;
+  min-width: 168px;
+  min-height: 54px;
+  padding: 0 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(105deg, var(--cyan), var(--violet) 58%, var(--pink));
+  color: #080811;
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: .04em;
+  box-shadow: 0 8px 28px rgba(145, 105, 255, .16);
+  transition: transform .15s ease, filter .15s ease;
+  touch-action: manipulation;
+}
+.start-button:active { transform: scale(.97); filter: brightness(.94); }
+.start-button:focus-visible, .level-option:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.levels-page {
+  display: flex;
+  justify-content: center;
+  padding: max(42px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom));
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(91, 73, 163, .10), transparent 45%),
+    var(--bg);
+}
+.levels-content {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.levels-content h1 {
+  margin: 12px 0 30px;
+  text-align: center;
+  color: var(--text);
+  font-size: clamp(25px, 7vw, 31px);
+  line-height: 1.25;
+  font-weight: 750;
+  letter-spacing: .08em;
+}
+.simple-level-list {
+  display: grid;
+  gap: 11px;
+}
+.level-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 66px;
+  padding: 12px 17px;
+  border: 1px solid rgba(255, 255, 255, .09);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .035);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+}
+a.level-option:active { transform: scale(.985); }
+a.level-option:hover { background: rgba(255, 255, 255, .06); border-color: rgba(57, 230, 255, .28); }
+.level-number {
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(57, 230, 255, .08);
+  color: var(--cyan);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.level-option:nth-child(2) .level-number { background: rgba(160, 107, 255, .11); color: #bba2ff; }
+.level-option:nth-child(3) .level-number { background: rgba(255, 79, 216, .09); color: #ff8ce7; }
+.level-option:nth-child(4) .level-number { background: rgba(255, 79, 216, .09); color: #ff8ce7; }
+.level-option.locked { opacity: .36; cursor: not-allowed; }
+.level-option .lock-mark { margin-left: auto; color: var(--muted); font-size: 15px; }
+
+@media (max-width: 360px) {
+  .home-content { gap: 30px; }
+  .wordmark { font-size: 46px; }
+  .levels-page { padding-left: 16px; padding-right: 16px; }
+  .level-option { min-height: 62px; padding: 10px 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
